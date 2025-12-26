@@ -1,7 +1,7 @@
 # main.py (demo snippet)
 import argparse
-from core.ingestion import load_data
-from core.preprocessing import build_preprocessor, fit_preprocessor, save_preprocessor
+from .ingestion import load_data
+from .preprocessing import build_preprocessor, fit_preprocessor, save_preprocessor
 import pandas as pd
 import os
 from sklearn.datasets import load_iris, fetch_california_housing
@@ -18,7 +18,7 @@ def demo_with_local_dataset(task='classification'):
         y = data.frame['MedHouseVal']
 
     print("Detecting schema...")
-    from core.ingestion import detect_schema
+    from .ingestion import detect_schema
     _, schema = load_data  # no-op to avoid linter; we use schema from detect_schema
     schema = detect_schema(X)
     for col, info in schema.items():
